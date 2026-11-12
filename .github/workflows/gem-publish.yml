@@ -1,0 +1,117 @@
+name: Publish gem
+on:
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Upload the verified gem to RubyGems
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: gem-publish
+  cancel-in-progress: false
+env:
+  SOURCE_DATE_EPOCH: "1794484800"
+defaults:
+  run:
+    shell: bash
+jobs:
+  build:
+    if: github.repository == 'abusezero/abusezero-ruby' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: ruby/setup-ruby@de492cf36cbab201753d720ce4f4e336cd688c94
+        with:
+          ruby-version: '3.4.12'
+          rubygems: '4.0.23'
+          bundler: none
+      - name: Build and compare
+        env:
+          RELEASE_SHA256: ${{ vars.RELEASE_SHA256 }}
+        run: |
+          set -euo pipefail
+          gem build abusezero.gemspec --output "$RUNNER_TEMP/abusezero.gem" >/dev/null
+          sha256sum "$RUNNER_TEMP/abusezero.gem"
+          for member in metadata.gz data.tar.gz checksums.yaml.gz; do
+            printf '%s ' "$member"; tar -xOf "$RUNNER_TEMP/abusezero.gem" "$member" | gzip -dc | sha256sum
+          done
+          [[ "$RELEASE_SHA256" =~ ^[0-9a-f]{64}$ ]]
+          printf '%s  %s\n' "$RELEASE_SHA256" "$RUNNER_TEMP/abusezero.gem" | sha256sum --check --status
+  attest:
+    needs: build
+    if: inputs.publish
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      id-token: write
+    outputs:
+      bundle: ${{ steps.sign.outputs.bundle }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: ruby/setup-ruby@de492cf36cbab201753d720ce4f4e336cd688c94
+        with:
+          ruby-version: '3.4.12'
+          rubygems: '4.0.23'
+          bundler: none
+      - name: Build, verify and sign
+        id: sign
+        env:
+          RELEASE_SHA256: ${{ vars.RELEASE_SHA256 }}
+        run: |
+          set -euo pipefail
+          [[ "$RELEASE_SHA256" =~ ^[0-9a-f]{64}$ ]]
+          gem build abusezero.gemspec --output "$RUNNER_TEMP/abusezero.gem" >/dev/null
+          printf '%s  %s\n' "$RELEASE_SHA256" "$RUNNER_TEMP/abusezero.gem" | sha256sum --check --status
+          gem exec sigstore-cli:0.2.3 sign "$RUNNER_TEMP/abusezero.gem" --bundle "$RUNNER_TEMP/abusezero.sigstore.json"
+          echo "bundle=$(base64 -w0 "$RUNNER_TEMP/abusezero.sigstore.json")" >> "$GITHUB_OUTPUT"
+  publish:
+    needs: attest
+    if: inputs.publish
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    environment: Production
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: ruby/setup-ruby@de492cf36cbab201753d720ce4f4e336cd688c94
+        with:
+          ruby-version: '3.4.12'
+          rubygems: '4.0.23'
+          bundler: none
+      - name: Verify and publish
+        env:
+          RELEASE_SHA256: ${{ vars.RELEASE_SHA256 }}
+          BUNDLE: ${{ needs.attest.outputs.bundle }}
+        run: |
+          set -euo pipefail
+          [[ "$RELEASE_SHA256" =~ ^[0-9a-f]{64}$ ]]
+          version=$(ruby -e 'print Gem::Specification.load("abusezero.gemspec").version')
+          [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
+          gem="$RUNNER_TEMP/abusezero-$version.gem"
+          gem build abusezero.gemspec --output "$gem" >/dev/null
+          printf '%s  %s\n' "$RELEASE_SHA256" "$gem" | sha256sum --check --status
+          printf '%s' "$BUNDLE" | base64 -d > "$gem.sigstore.json"
+          ruby -rjson -rbase64 -e 'digest = JSON.parse(File.read(ARGV[0])).dig("messageSignature", "messageDigest", "digest"); exit(Base64.strict_decode64(digest).unpack1("H*") == ARGV[1])' "$gem.sigstore.json" "$RELEASE_SHA256"
+          token=$(curl -fsS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=rubygems.org" | ruby -rjson -e 'print JSON.parse($stdin.read).fetch("value")')
+          echo "::add-mask::$token"
+          key=$(JWT="$token" ruby -rjson -rnet/http -e '
+            response = Net::HTTP.post(URI("https://rubygems.org/api/v1/oidc/trusted_publisher/exchange_token"),
+              JSON.generate("jwt" => ENV.fetch("JWT"), "owner" => "256469"), "Content-Type" => "application/json")
+            abort("Token exchange failed: #{response.code} #{response.body.to_s[0, 500]}") unless response.code == "201"
+            print JSON.parse(response.body).fetch("rubygems_api_key")')
+          echo "::add-mask::$key"
+          GEM_HOST_API_KEY="$key" gem push "$gem" --attestation "$gem.sigstore.json" --host https://rubygems.org

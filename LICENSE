@@ -1,0 +1,279 @@
+ABUSEZERO SOFTWARE DEVELOPMENT KIT LICENSE AGREEMENT
+
+Copyright (c) 2026 AbuseZero. All rights reserved.
+
+This AbuseZero Software Development Kit License Agreement (this "Agreement")
+is a legal agreement between you and AbuseZero. If you accept this Agreement
+on behalf of an organization, "you" means that organization, and you represent
+that you have authority to bind it. By downloading, installing, copying,
+accessing or using the Software, you agree to this Agreement. If you do not
+agree, do not download, install, copy, access or use the Software.
+
+1. DEFINITIONS
+
+1.1 "AbuseZero", "we" and "us" mean the entity that operates the AbuseZero
+    service, as identified in the Terms.
+
+1.2 "Terms" means the AbuseZero Terms of Service published at
+    https://abusezero.com/terms, together with the documents they reference,
+    including the Acceptable Use Policy, Privacy Policy and Data Processing
+    Agreement, each as updated from time to time, or any other written
+    agreement between you and AbuseZero that governs your use of the Service.
+
+1.3 "Service" means the AbuseZero application programming interfaces, Model
+    Context Protocol endpoints, dashboard and related hosted services.
+
+1.4 "Software" means this software package, including its server, browser,
+    command-line and Model Context Protocol components, any standalone
+    browser script made available by AbuseZero, and all related files,
+    documentation, updates and copies, excluding Third-Party Components.
+
+1.5 "Browser Components" means the parts of the Software designed to run in
+    an end user's web browser.
+
+1.6 "Your Application" means a website, application or service that you
+    develop and operate and that uses the Service.
+
+1.7 "Third-Party Components" means software owned by third parties and
+    included in the Software, as listed in the THIRD-PARTY-NOTICES file.
+
+2. LICENSE GRANT
+
+2.1 Subject to your continued compliance with this Agreement and the Terms,
+    AbuseZero grants you a limited, non-exclusive, non-transferable,
+    non-sublicensable, revocable, royalty-free license, during the term of
+    this Agreement, to:
+
+    (a) install, run and use the Software solely to access and use the
+        Service in accordance with the Terms;
+
+    (b) incorporate the Software, in unmodified form, into Your Application
+        solely to enable Your Application to access the Service; and
+
+    (c) distribute the Browser Components, in unmodified object form and
+        solely as part of Your Application, to end users of Your Application,
+        including through bundling, minification or other automated build
+        processes that do not alter the functionality of the Browser
+        Components.
+
+2.2 You may make a reasonable number of copies of the Software for backup,
+    development, testing and deployment of Your Application.
+
+2.3 All rights not expressly granted in this Agreement are reserved by
+    AbuseZero and its licensors. No license is granted by implication,
+    estoppel or otherwise.
+
+3. RESTRICTIONS
+
+    Except as expressly permitted by this Agreement or by applicable law that
+    cannot be excluded by contract, you will not, and will not permit any
+    third party to:
+
+    (a) copy, modify, translate, adapt or create derivative works of the
+        Software;
+
+    (b) decompile, disassemble, reverse engineer or otherwise attempt to
+        derive the source code, algorithms, structure, signals or methods of
+        the Software or the Service;
+
+    (c) sell, resell, rent, lease, lend, sublicense, distribute, publish or
+        otherwise make the Software available to any third party, except the
+        Browser Components as permitted by Section 2.1(c);
+
+    (d) publish or distribute the Software, or any part of it, as a
+        standalone package, library, module or container image, in any
+        package registry, repository or other channel;
+
+    (e) use the Software to access any service other than the Service, or to
+        access the Service other than in accordance with the Terms;
+
+    (f) use the Software to build, train, benchmark or improve a product or
+        service that competes with the Service, or for competitive analysis;
+
+    (g) circumvent, disable or interfere with any security, authentication,
+        rate-limiting, usage-limiting or integrity mechanism of the Software
+        or the Service;
+
+    (h) remove, alter or obscure any copyright, trademark, license or other
+        proprietary notice in or on the Software;
+
+    (i) use the Software in violation of any applicable law, regulation or
+        third-party right, including laws on privacy, data protection,
+        consumer protection, electronic communications and export control;
+        or
+
+    (j) use the Software to transmit malicious code or data that you do not
+        have the right to transmit.
+
+4. YOUR RESPONSIBILITIES
+
+4.1 You are responsible for Your Application, for all use of the Software
+    under your credentials, and for your compliance and your end users'
+    compliance with this Agreement and the Terms.
+
+4.2 You are responsible for providing any notices to, and obtaining any
+    consents from, end users that are required by applicable law for the use
+    of the Software in Your Application, including for the Browser
+    Components.
+
+4.3 You are responsible for keeping credentials, access tokens and devices
+    on which the Software stores them secure, and for revoking access you no
+    longer need.
+
+5. DATA
+
+    The Software transmits data to the Service. AbuseZero processes that data
+    in accordance with the Terms. This Agreement does not change the
+    allocation of rights and responsibilities for data set out in the Terms.
+
+6. OWNERSHIP
+
+    The Software is licensed, not sold. AbuseZero and its licensors retain all
+    right, title and interest, including all intellectual property rights, in
+    and to the Software, the Service and all copies, modifications and
+    derivative works of them. This Agreement grants you no right to use the
+    names, trademarks, service marks, logos or trade dress of AbuseZero.
+
+7. THIRD-PARTY COMPONENTS
+
+    Third-Party Components are licensed to you under their own license terms,
+    which are reproduced in the THIRD-PARTY-NOTICES file. Nothing in this
+    Agreement limits your rights under, or grants you rights that supersede,
+    those license terms. To the extent those license terms require it,
+    they apply to the relevant Third-Party Components in place of this
+    Agreement.
+
+8. UPDATES AND SUPPORT
+
+    AbuseZero may, at its discretion, provide updates to the Software, change
+    or discontinue the Software or any of its features, and require you to
+    use a current version to continue accessing the Service. Updates are
+    governed by this Agreement unless they are accompanied by other terms.
+    AbuseZero has no obligation to provide maintenance or support for the
+    Software except as stated in the Terms.
+
+9. FEEDBACK
+
+    If you provide suggestions, comments or other feedback about the Software,
+    AbuseZero may use it for any purpose without restriction, compensation or
+    obligation to you.
+
+10. TERM AND TERMINATION
+
+10.1 This Agreement takes effect when you first download, install, copy,
+     access or use the Software and continues until terminated.
+
+10.2 This Agreement, and all licenses granted under it, terminate
+     automatically and without notice if you breach this Agreement, or if
+     your right to use the Service ends under the Terms. AbuseZero may also
+     terminate this Agreement at any time on notice to you.
+
+10.3 On termination, you must stop using the Software and destroy all copies
+     in your possession or control, including copies incorporated into Your
+     Application. Sections 1, 3, 4, 5, 6, 7, 9, 10.3 and 11 through 16
+     survive termination.
+
+11. DISCLAIMER OF WARRANTIES
+
+    TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE SOFTWARE IS
+    PROVIDED "AS IS" AND "AS AVAILABLE", WITH ALL FAULTS AND WITHOUT WARRANTY
+    OF ANY KIND. ABUSEZERO AND ITS LICENSORS DISCLAIM ALL WARRANTIES, WHETHER
+    EXPRESS, IMPLIED, STATUTORY OR OTHERWISE, INCLUDING ANY WARRANTIES OF
+    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE,
+    NON-INFRINGEMENT, ACCURACY, QUIET ENJOYMENT AND ANY WARRANTIES ARISING
+    FROM COURSE OF DEALING OR USAGE OF TRADE. ABUSEZERO DOES NOT WARRANT THAT
+    THE SOFTWARE WILL BE UNINTERRUPTED, SECURE OR ERROR-FREE, THAT DEFECTS
+    WILL BE CORRECTED, OR THAT THE SOFTWARE OR THE SERVICE WILL DETECT OR
+    PREVENT ANY PARTICULAR ABUSE.
+
+12. LIMITATION OF LIABILITY
+
+12.1 TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT WILL
+     ABUSEZERO OR ITS LICENSORS BE LIABLE FOR ANY INDIRECT, INCIDENTAL,
+     SPECIAL, CONSEQUENTIAL, EXEMPLARY OR PUNITIVE DAMAGES, OR FOR ANY LOSS
+     OF PROFITS, REVENUE, BUSINESS, GOODWILL, DATA OR USE, OR COSTS OF
+     SUBSTITUTE GOODS OR SERVICES, ARISING OUT OF OR RELATING TO THIS
+     AGREEMENT OR THE SOFTWARE, HOWEVER CAUSED AND UNDER ANY THEORY OF
+     LIABILITY, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+12.2 TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE TOTAL LIABILITY
+     OF ABUSEZERO AND ITS LICENSORS ARISING OUT OF OR RELATING TO THIS
+     AGREEMENT OR THE SOFTWARE WILL NOT EXCEED ONE HUNDRED UNITED STATES
+     DOLLARS (USD 100). THE SOFTWARE IS LICENSED FREE OF CHARGE, AND ANY
+     LIABILITY RELATING TO THE SERVICE IS GOVERNED SOLELY BY THE TERMS.
+
+12.3 THE LIMITATIONS IN THIS SECTION APPLY EVEN IF A REMEDY FAILS OF ITS
+     ESSENTIAL PURPOSE, AND DO NOT APPLY TO LIABILITY THAT CANNOT BE LIMITED
+     OR EXCLUDED UNDER APPLICABLE LAW.
+
+13. INDEMNIFICATION
+
+    You will defend, indemnify and hold harmless AbuseZero, its affiliates
+    and their respective officers, directors, employees, agents and licensors
+    from and against any claims, damages, losses, liabilities, costs and
+    expenses, including reasonable legal fees, arising out of or relating to
+    (a) Your Application, (b) your use of the Software in breach of this
+    Agreement, the Terms or applicable law, or (c) your failure to provide
+    notices or obtain consents required by Section 4.2.
+
+14. EXPORT CONTROL AND SANCTIONS
+
+    You will comply with all applicable export control and economic
+    sanctions laws and regulations. You represent that you are not located
+    in, or organized under the laws of, any country or region subject to
+    comprehensive sanctions, and that you are not, and are not owned or
+    controlled by, a person identified on any applicable restricted-party
+    list. You will not export, re-export or transfer the Software in
+    violation of those laws.
+
+15. GOVERNMENT END USERS
+
+    The Software is "commercial computer software" and "commercial computer
+    software documentation", as those terms are used in the applicable
+    procurement regulations. Any use, duplication or disclosure by or for a
+    government is subject to the rights granted in this Agreement, which are
+    the only rights granted.
+
+16. GENERAL
+
+16.1 Relationship to the Terms. This Agreement governs the Software. The
+     Terms govern the Service. If this Agreement and the Terms conflict with
+     respect to the Software, this Agreement controls, except that any
+     provision of the Terms that gives AbuseZero greater protection controls.
+
+16.2 Governing law and disputes. This Agreement, and any dispute arising out
+     of or relating to it, is governed by the law, and subject to the
+     exclusive jurisdiction of the courts, specified in the Terms, without
+     regard to conflict of law rules. The United Nations Convention on
+     Contracts for the International Sale of Goods does not apply.
+
+16.3 Equitable relief. A breach of Section 3 or Section 6 may cause
+     AbuseZero irreparable harm for which damages would be an inadequate
+     remedy. AbuseZero may seek injunctive or other equitable relief in any
+     court of competent jurisdiction, in addition to any other remedy.
+
+16.4 Assignment. You may not assign or transfer this Agreement, by operation
+     of law or otherwise, without AbuseZero's prior written consent. Any
+     attempted assignment without consent is void. AbuseZero may assign this
+     Agreement without restriction.
+
+16.5 Changes. AbuseZero may update this Agreement by publishing a new
+     version with the Software. Each version of the Software is governed by
+     the version of this Agreement included with it.
+
+16.6 Severability and waiver. If any provision of this Agreement is held
+     unenforceable, it will be enforced to the maximum extent permissible
+     and the remaining provisions remain in full force and effect. A failure
+     or delay in enforcing any provision is not a waiver of it.
+
+16.7 Entire agreement. This Agreement, together with the Terms, is the
+     entire agreement between you and AbuseZero regarding the Software and
+     supersedes all prior or contemporaneous understandings regarding it.
+
+16.8 Notices. AbuseZero may give notices under this Agreement by email to
+     the address associated with your AbuseZero account, in the dashboard,
+     or by publishing them with the Software. You may give notices to
+     AbuseZero through the contact page at https://abusezero.com/contact.
+
+16.9 Interpretation. Headings are for convenience only. "Including" means
+     "including without limitation".

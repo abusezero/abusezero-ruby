@@ -1,0 +1,1 @@
+This package uses Ruby's standard library and the separately distributed base64 gem. Their own licenses and notices ship with Ruby and with that gem. No dependency source is bundled.

@@ -1,0 +1,20 @@
+module AbuseZero
+  VERSION: String
+  class Core
+    def initialize: (?key: String?, ?access_token: String?, ?workspace: String?, ?outage: String, ?agent: String?, ?base_url: String, ?transport: untyped) -> void
+    def close: () -> void
+  end
+  class Error < StandardError
+    attr_reader code: String
+    attr_reader status: Integer
+    attr_reader request_id: String?
+    attr_reader retryable: bool
+    attr_reader docs_url: String?
+  end
+  class WebhookVerificationError < StandardError
+  end
+  def self.incoming_request: (method: String, url: String, headers: Hash[String, String]) -> Hash[String, untyped]
+  def self.create_phone_hash: (secret: String, key_version: String, e164: String) -> Hash[String, String]
+  def self.create_custom_identifier: (secret: String, key_version: String, key: String, value: String) -> Hash[String, untyped]
+  def self.verify_webhook: (payload: String, headers: Hash[String, String], secret: String | Array[String?], ?tolerance_seconds: Numeric, ?now: Numeric) -> Hash[String, untyped]
+end
